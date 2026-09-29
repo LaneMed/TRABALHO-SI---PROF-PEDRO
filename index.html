@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IFTM CONNECT</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef4ec;--c:#fff;--ink:#12281d;--m:#5b7266;--g:#1f8a3b;--gd:#0d3b26;--am:#ffb627;--ln:#d5e2d3;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0b1a12;--c:#132a1d;--ink:#e8f3ea;--m:#93ad9b;--ln:#22402f;--g:#3fcf63}}
+:root[data-theme=dark]{--bg:#0b1a12;--c:#132a1d;--ink:#e8f3ea;--m:#93ad9b;--ln:#22402f;--g:#3fcf63}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Figtree,system-ui,sans-serif}
+h1,h2,h3{font-family:'Bricolage Grotesque',system-ui,sans-serif;margin:.2em 0 .5em;line-height:1.15}
+h1{font-size:1.9rem}h2{font-size:1.3rem}
+button{font:inherit;cursor:pointer;border:0;border-radius:12px;padding:.5rem .9rem;background:var(--g);color:#fff;font-weight:700}
+button:disabled{opacity:.45;cursor:not-allowed}
+.o{background:transparent;color:var(--ink);border:1.5px solid var(--ln)}
+input,select{font:inherit;padding:.55rem .8rem;border-radius:12px;border:1.5px solid var(--ln);background:var(--c);color:var(--ink);width:100%}
+:focus-visible{outline:3px solid var(--am);outline-offset:2px}
+aside{position:fixed;left:0;top:0;bottom:0;width:220px;background:var(--gd);padding:1rem;padding-top:calc(1rem + env(safe-area-inset-top,0px));display:flex;flex-direction:column;gap:.25rem;overflow-y:auto;z-index:5}
+aside button{background:transparent;text-align:left;color:#cfe6d6;display:flex;gap:.5rem;align-items:center}
+aside button.on{background:#ffffff22;color:#fff}
+.lg{font-family:'Bricolage Grotesque';font-weight:800;color:#fff;font-size:1.15rem;display:flex;align-items:center;gap:.5rem;margin-bottom:1rem}
+.lg i{width:32px;height:32px;border-radius:9px;background:var(--am);color:var(--gd);display:grid;place-items:center;font-style:normal}
+.mn{margin-left:220px;min-height:100vh;display:flex;flex-direction:column}
+main{padding:1.2rem;max-width:1000px;width:100%;margin:auto;flex:1}
+.tb{display:flex;justify-content:flex-end;gap:.5rem;padding:.6rem 1.2rem 0}
+.tb button{padding:.3rem .7rem}
+.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.9rem;margin-bottom:1rem}
+.two{display:grid;grid-template-columns:2fr 1fr;gap:1rem;align-items:start}
+.cd{background:var(--c);border:1px solid var(--ln);border-radius:18px;padding:1rem;box-shadow:0 2px 8px #0a2a1408;margin-bottom:.7rem}
+.cl{cursor:pointer}.cl:hover{border-color:var(--g)}
+.m{color:var(--m);font-size:.88rem}
+.r{display:flex;gap:.6rem;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.ch{display:inline-block;padding:.12rem .6rem;border-radius:99px;font-size:.8rem;font-weight:700}
+.ok{background:#d3f3dc;color:#0d5a26}.w{background:#fff0c9;color:#7a5200}.bd{background:#ffd9de;color:#a3172b}
+.bg{font-size:1.2rem;display:block;margin:.2rem 0}
+.sc button{padding:1.3rem;font-size:1.05rem;background:var(--gd);color:#fff}
+.pl{display:inline-block;padding:.35rem .9rem;margin:0 .3rem .4rem 0;border-radius:99px;border:1.5px solid var(--ln);background:var(--c);cursor:pointer;font-weight:600}
+.pl.on{background:var(--g);color:#fff;border-color:var(--g)}
+.em{height:90px;border-radius:14px;background:linear-gradient(135deg,#d3f3dc,#ffe9b0);display:grid;place-items:center;font-size:3rem;margin-bottom:.5rem}
+.qt{display:flex;gap:.4rem;align-items:center}.qt button{padding:.2rem .7rem}
+.stat b{font-family:'Bricolage Grotesque';font-size:1.8rem;display:block}
+.tl{display:flex;gap:.4rem;margin:.8rem 0}.tl div{flex:1;text-align:center;padding:.5rem;border-radius:10px;background:var(--bg);color:var(--m);font-size:.85rem}.tl .on{background:var(--g);color:#fff;font-weight:700}
+.chat{height:300px;overflow-y:auto;display:flex;flex-direction:column;gap:.4rem;margin:.6rem 0}
+.bb{max-width:80%;padding:.5rem .8rem;border-radius:14px;background:var(--bg)}.bb.me{align-self:flex-end;background:var(--g);color:#fff}
+.md{position:fixed;inset:0;background:#000a;display:none;place-items:center;padding:1rem;z-index:20}.md.on{display:grid}
+.md .cd{max-width:400px;width:100%;display:grid;gap:.6rem;margin:0}
+.ts{position:fixed;left:50%;bottom:90px;transform:translate(-50%,200px);background:var(--gd);color:#fff;padding:.7rem 1.1rem;border-radius:14px;transition:.3s;z-index:30}.ts.on{transform:translate(-50%,0)}
+footer{background:var(--gd);color:#c6e0cf;text-align:center;padding:1.3rem 1rem;font-weight:700;font-size:.85rem}footer span{color:var(--am)}
+.lgn{min-height:100vh;display:grid;grid-template-columns:1.1fr 1fr;background:var(--gd)}
+.lgn .hr{color:#fff;padding:3rem;display:flex;flex-direction:column;justify-content:center}.lgn .hr h1{font-size:clamp(2.2rem,5vw,3.6rem)}
+.lgn .fm{background:var(--bg);padding:2rem;display:grid;place-content:center;gap:.7rem}.fm>*{width:min(360px,100%)}
+table{width:100%;border-collapse:collapse}td,th{padding:.4rem;border-bottom:1px solid var(--ln);text-align:left}
+.spin{width:28px;height:28px;border:4px solid var(--ln);border-top-color:var(--g);border-radius:50%;animation:s 1s linear infinite;margin:auto}@keyframes s{to{transform:rotate(360deg)}}
+@media(max-width:800px){.lgn,.two{grid-template-columns:1fr}.lgn .hr{padding:1.5rem}
+aside{top:auto;width:auto;right:0;flex-direction:row;padding:.3rem;padding-bottom:calc(.3rem + env(safe-area-inset-bottom,0px));overflow-x:auto}.lg{display:none}
+aside button{flex-direction:column;gap:0;text-align:center;font-size:.7rem;padding:.3rem .6rem;white-space:nowrap}.mn{margin-left:0;padding-bottom:70px}}
+@media(prefers-reduced-motion:reduce){.spin{animation:none}}
+</style></head><body>
+<div id="app"></div><div class="md" id="md"></div><div class="ts" id="ts"></div>
+<script>
+const $=s=>document.querySelector(s),E=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),$$=v=>'R$ '+v.toFixed(2).replace('.',',');
+let U,R,V='home',cat='Lanches',cart={},q={},sub=null,st='perg',cw='Marcos Silva',dir='ida',AVG=8;
+const CATS=['Lanches','Sanduíches','Cachorros-quentes','Porções','Bebidas','Doces'];
+const P=[[1,0,'🍔','X-Burguer','Pão, hambúrguer, queijo e molho especial',12],[2,0,'🥓','X-Bacon','Hambúrguer, bacon crocante e cheddar',15],[3,1,'🥪','Misto quente','Queijo e presunto na chapa',6.5],[4,1,'🥬','Natural','Frango desfiado, cenoura e alface',8],[5,2,'🌭','Completo','Salsicha, purê, milho e batata palha',9],[6,2,'🌭','Simples','Salsicha, molho e batata palha',6],[7,3,'🍟','Batata frita','Porção crocante para dividir',14],[8,3,'🥟','Coxinha (6 un)','Frango com catupiry',12],[9,4,'🧃','Suco natural','Laranja, limão ou maracujá 300ml',6],[10,4,'🥤','Refrigerante','Lata 350ml',5],[11,5,'🍫','Brownie','Chocolate com nozes',6],[12,5,'🍮','Pudim','Fatia cremosa de leite condensado',5.5]].map(a=>({id:a[0],c:CATS[a[1]],e:a[2],n:a[3],d:a[4],p:a[5],on:1}));
+const O=[{id:152,i:'1× X-Burguer, 1× Suco natural',t:18,s:1,u:''}],SL=['🟡 Pedido recebido','🟠 Em preparação','🟢 Pronto para retirada','✔ Finalizado'];
+const T={ida:[['06:30','Linha 01'],['07:00','Linha 02'],['12:00','Linha 01'],['18:00','Linha 01'],['18:30','Linha 02'],['19:00','Linha 01']],volta:[['12:20','Linha 02'],['17:30','Linha 01'],['22:30','Linha 01'],['22:45','Linha 02']]};
+const D={'Linha 02':{m:10,c:8,loc:'Av. Central',o:''}};
+const RD=[{n:'João Silva',cu:'ADS — 4º período',r:4.8,k:12,dir:'ida',o:'Centro de Paracatu',d:'IFTM Campus Paracatu',h:'18:00',v:3,ix:0},{n:'Ana Souza',cu:'ADS — 3º período',r:4.9,k:20,dir:'volta',o:'IFTM Campus Paracatu',d:'Centro',h:'22:30',v:2,ix:0}];
+const SUBS=['Programação','Banco de Dados','Matemática','Desenvolvimento Web','Sistemas Operacionais','Engenharia de Software','Metodologia Científica'];
+const QA={'Banco de Dados':[{a:'Pedro',q:'Alguém consegue me explicar como funciona INNER JOIN?',r:[{n:'Marcos Silva',t:'Ele devolve só as linhas com correspondência nas duas tabelas, usando a chave do ON.',u:5,d:0}]}],'Programação':[{a:'Lucas',q:'Qual a diferença entre for e while?',r:[]}]};
+const VETS=[['Marcos Silva','ADS — 4º período',4.9,32],['Ana Souza','ADS — 3º período',4.8,18],['Lucas Lima','ADS — 5º período',4.7,11]];
+const RK={Marcos:420,Ana:350,Lucas:280},MAT={'Banco de Dados':['Resumo SQL','Exercícios SELECT','Revisão para prova','Material de aula']},MSG={};
+const AG=[['28 SET','📚','Programação Web — 19:00'],['30 SET','📝','Prova — Banco de Dados'],['02 OUT','📑','Entrega — Projeto Integrador']];
+const N=[{t:'Seu pedido #152 está em preparação.',r:0},{t:'Linha 02 apresenta atraso.',r:0},{t:'Marcos respondeu sua dúvida.',r:0},{t:'Prova de Banco de Dados amanhã.',r:0},{t:'Nova carona disponível.',r:1}];
+const TB=['usuários','cursos','disciplinas','disciplinas_cursadas','perguntas','respostas','mensagens','materiais','produtos','pedidos','itens_pedido','pagamentos','linhas','horarios','ocorrencias_atraso','caronas','passageiros','avaliacoes','notificacoes','eventos'];
+const NAV=[['home','🏠','Início'],['cantina','🍔','Cantina'],['transporte','🚌','Transporte'],['caronas','🚗','Caronas'],['estudos','📚','Estudos'],['agenda','📅','Agenda'],['notif','🔔','Avisos'],['perfil','👤','Perfil']];
+const FT='<footer>DESENVOLVIDO POR <span> ISLAINE MEDEIROS, CLARA COSTA, FELIPE GONÇALVES E CLARICE CALDEIRA</span></footer>';
+function ts(t){const e=$('#ts');e.textContent=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),2600)}
+function nt(t,x){N.unshift({t,r:0});if(x)ts('🔔 '+t)}
+function mod(h){$('#md').innerHTML='<div class="cd">'+h+'</div>';$('#md').className='md on'}
+function cl(){$('#md').className='md'}
+function go(v){V=v;render();scrollTo(0,0)}
+function th(){const r=document.documentElement;r.dataset.theme=(r.dataset.theme=='dark'||(!r.dataset.theme&&matchMedia('(prefers-color-scheme:dark)').matches))?'light':'dark'}
+const mine=()=>O.filter(o=>o.u==U.n).pop();
+const tot=()=>Object.entries(cart).reduce((s,[i,n])=>s+P.find(p=>p.id==i).p*n,0);
+const bs=l=>D[l]?`<span class="ch w">🟡 ${D[l].m} min de atraso</span>`:'<span class="ch ok">🟢 Normal</span>';
+function nb(){const n=new Date(),m=n.getHours()*60+n.getMinutes();return T.ida.find(x=>+x[0].slice(0,2)*60+ +x[0].slice(3)>=m)||T.ida[0]}
+const nl=n=>`<div class="cd r" style="opacity:${n.r?.6:1}">🔔 ${E(n.t)}</div>`;
+function render(){$('#app').innerHTML=U?shell(VW[V]()):login()}
+function login(){return `<div class="lgn"><div class="hr"><div class="lg"><i>IF</i>IFTM CONNECT</div><h1>Tudo que o aluno precisa, em um só lugar.</h1><p style="color:#c6e0cf;max-width:44ch">Cantina, ônibus, caronas e estudos do IFTM Campus Paracatu, do celular ao computador.</p></div>
+<div class="fm"><h2>Entrar</h2><input id="em" type="email" placeholder="E-mail institucional" aria-label="E-mail"><input id="pw" type="password" placeholder="Senha" aria-label="Senha"><div id="er" class="ch bd" style="display:none"></div>
+<button onclick="ent()">ENTRAR</button><button class="o" onclick="ts('Cadastro enviado para validação do e-mail institucional.')">CRIAR CONTA</button><button class="o" onclick="ts('Enviamos um link de redefinição ao seu e-mail.')">ESQUECI MINHA SENHA</button>
+<div class="m">Demonstração: <a href="#" onclick="dm('aluno');return false">aluno</a> · <a href="#" onclick="dm('cantina');return false">cantina</a> · <a href="#" onclick="dm('admin');return false">administrador</a></div></div></div>${FT}`}
+function dm(r){$('#em').value=(r=='aluno'?'joao':r)+'@estudante.iftm.edu.br';$('#pw').value='123456';ent()}
+function ent(){const e=$('#em').value.trim(),p=$('#pw').value;if(!/^\S+@\S+\.\S+$/.test(e)||!p){const x=$('#er');x.style.display='inline-block';x.textContent='Informe um e-mail institucional válido e a senha.';return}
+const n=e.split('@')[0];R=n.startsWith('cantina')?'cantina':n.startsWith('admin')?'admin':'aluno';U={n:n[0].toUpperCase()+n.slice(1)};O[0].u=U.n;V=R=='aluno'?'home':R=='admin'?'admin':'painel';render()}
+function shell(c){const it=R=='aluno'?NAV:R=='admin'?[['admin','📊','Admin'],['painel','🧾','Cantina'],...NAV]:[['painel','🧾','Painel'],['perfil','👤','Perfil']];const un=N.filter(n=>!n.r).length;
+return `<aside><div class="lg"><i>IF</i>IFTM CONNECT</div>${it.map(a=>`<button class="${V==a[0]||(a[0]=='cantina'&&['carrinho','pedido'].includes(V))||(a[0]=='estudos'&&V=='chat')?'on':''}" onclick="go('${a[0]}')">${a[1]} <small>${a[2]}${a[0]=='notif'&&un?' ('+un+')':''}</small></button>`).join('')}</aside>
+<div class="mn"><div class="tb"><span class="m" style="margin-right:auto;padding-top:.3rem">${R} · ${E(U.n)}</span><button class="o" onclick="th()">🌓</button><button class="o" onclick="U=null;render()">Sair</button></div><main>${c}</main>${FT}</div>`}
+const VW={
+home(){const b=nb(),o=mine();return `<h1>Olá, ${E(U.n)}! 👋</h1><div class="g"><div class="cd"><div class="m">Próxima aula</div><b class="bg">📚 Programação Web</b>19:00</div>
+<div class="cd cl" onclick="go('transporte')"><div class="m">Próximo ônibus</div><b class="bg">🚌 ${b[1]}</b>${b[0]} ${bs(b[1])}</div>
+<div class="cd cl" onclick="go('pedido')"><div class="m">Pedido da cantina</div><b class="bg">🍔 ${o?'Pedido #'+o.id:'Nenhum'}</b>${o?SL[o.s]:'Faça seu pedido'}</div>
+<div class="cd cl" onclick="go('estudos')"><div class="m">Sala de estudos</div><b class="bg">💬 3 novas respostas</b></div></div>
+<div class="g sc">${[['cantina','🍔 CANTINA'],['transporte','🚌 TRANSPORTE'],['caronas','🚗 CARONAS'],['estudos','📚 SALA DE ESTUDOS']].map(a=>`<button onclick="go('${a[0]}')">${a[1]}</button>`).join('')}</div>
+<h2>Notificações recentes</h2>${N.slice(0,3).map(nl).join('')}`},
+cantina(){const n=Object.values(cart).reduce((a,b)=>a+b,0);return `<div class="r"><h1>🍔 Cantina Virtual</h1><button onclick="go('carrinho')">🛒 Carrinho (${n})</button></div><p class="m">Peça, pague e retire no balcão. Espera estimada: ~${AVG} min.</p>
+<div>${CATS.map(c=>`<span class="pl ${c==cat?'on':''}" onclick="cat='${c}';go('cantina')">${c}</span>`).join('')}</div>
+<div class="g">${P.filter(p=>p.c==cat).map(p=>{const k=q[p.id]||1;return `<div class="cd"><div class="em">${p.e}</div><b>${p.n}</b><div class="m">${p.d}</div><div class="r"><b>${$$(p.p)}</b><span class="ch ${p.on?'ok':'bd'}">${p.on?'Disponível':'Esgotado'}</span></div>
+<div class="qt" style="margin:.5rem 0"><button class="o" onclick="qq(${p.id},-1)">−</button><b>${k}</b><button class="o" onclick="qq(${p.id},1)">+</button></div><button style="width:100%" ${p.on?'':'disabled'} onclick="ad(${p.id})">ADICIONAR AO CARRINHO</button></div>`}).join('')}</div>`},
+carrinho(){const k=Object.keys(cart),s=tot(),tx=k.length?.5:0;return `<h1>🛒 Carrinho</h1><div class="cd">${k.length?`<table><tr><th>Produto</th><th>Qtd</th><th>Valor</th><th></th></tr>${k.map(i=>{const p=P.find(x=>x.id==i);return `<tr><td>${p.e} ${p.n}</td><td>${cart[i]}</td><td>${$$(p.p*cart[i])}</td><td><button class="o" onclick="delete cart[${i}];go('carrinho')">✕</button></td></tr>`}).join('')}</table>
+<p class="r"><span>Subtotal</span><span>${$$(s)}</span></p><p class="r"><span>Taxa de conveniência</span><span>${$$(tx)}</span></p><h2 class="r"><span>TOTAL</span><span>${$$(s+tx)}</span></h2><button style="width:100%" onclick="pg()">FINALIZAR PEDIDO</button>`:'Seu carrinho está vazio. <a href="#" onclick="go(\'cantina\');return false">Ver cardápio</a>'}</div>`},
+pedido(){const o=mine();if(!o)return '<h1>Nenhum pedido ainda</h1><button onclick="go(\'cantina\')">Fazer pedido</button>';let r='';for(let y=0;y<21;y++)for(let x=0;x<21;x++){const f=(x<7&&y<7)||(x>13&&y<7)||(x<7&&y>13);const on=f?((x%6==0||y%6==0||x==14||x==20||y==14||y==20)||((x%6>1&&x%6<5)&&(y%6>1&&y%6<5))):((x*31+y*17+o.id*7+x*y)%5<2);if(on)r+=`<rect x="${x}" y="${y}" width="1" height="1"/>`}
+return `<h1>PEDIDO #${o.id}</h1><div class="two"><div class="cd"><h2>${SL[o.s]}</h2><div class="tl">${['Pedido recebido','Em preparação','Pronto'].map((t,i)=>`<div class="${i<=o.s?'on':''}">${t}</div>`).join('')}</div><p>${E(o.i)}</p><p class="m">TEMPO ESTIMADO</p><b style="font-size:2rem">${o.s>=2?'Pronto!':AVG+' minutos'}</b>${o.s==2?'<p class="ch ok">🔔 Seu pedido está pronto para retirada!</p>':''}</div>
+<div class="cd" style="text-align:center"><svg viewBox="0 0 21 21" width="160" fill="currentColor" style="background:#fff;color:#000;padding:8px;border-radius:12px" role="img" aria-label="QR Code de retirada">${r}</svg><div class="m">QR Code para retirada no balcão</div></div></div>`},
+painel(){const pr=O.filter(o=>o.s==1).length,rd=O.filter(o=>o.s==2).length,f=1245+O.slice(1).reduce((a,o)=>a+o.t,0);return `<h1>🧾 Painel da Cantina</h1><div class="g stat"><div class="cd">Pedidos hoje<b>${86+O.length}</b></div><div class="cd">Em preparação<b>${pr}</b></div><div class="cd">Prontos<b>${rd}</b></div><div class="cd">Faturamento<b>${$$(f)}</b></div><div class="cd">Tempo médio<b>${AVG} min</b><input type="number" min="1" value="${AVG}" onchange="AVG=+this.value||8;go('painel')" aria-label="Tempo médio"></div></div>
+<h2>Pedidos</h2>${O.filter(o=>o.s<3).map(o=>`<div class="cd r"><div><b>#${o.id}</b> · ${E(o.u)}<div class="m">${E(o.i)} · ${$$(o.t)}</div></div><div>${SL[o.s]} <button onclick="ss(${o.id},${o.s+1})">${['Aceitar e preparar','Marcar como pronto','Finalizar'][o.s]}</button></div></div>`).join('')||'<div class="cd m">Sem pedidos pendentes.</div>'}
+<h2>Produtos</h2><div class="cd"><table>${P.map(p=>`<tr><td>${p.e} ${p.n}</td><td><input type="number" step=".5" value="${p.p}" onchange="P[${p.id-1}].p=+this.value" style="width:90px" aria-label="Preço ${p.n}"></td><td><button class="${p.on?'':'o'}" onclick="P[${p.id-1}].on^=1;go('painel')">${p.on?'Ativo':'Inativo'}</button></td></tr>`).join('')}</table>
+<div class="r" style="margin-top:.7rem"><input id="np" placeholder="Novo produto" style="flex:2"><input id="nv" type="number" step=".5" placeholder="Preço" style="flex:1"><button onclick="anp()">Cadastrar</button></div></div>`},
+transporte(){return `<div class="r"><h1>🚌 Transporte</h1><button onclick="rep()">⚠️ ÔNIBUS ESTÁ ATRASADO</button></div>
+<div><span class="pl ${dir=='ida'?'on':''}" onclick="dir='ida';go('transporte')">IR PARA O IFTM</span><span class="pl ${dir=='volta'?'on':''}" onclick="dir='volta';go('transporte')">VOLTAR DO IFTM</span></div>
+${Object.entries(D).map(([l,d])=>`<div class="cd r"><div>⚠️ <b>Possível atraso de ${d.m} minutos</b> · ${l}<div class="m">${E(d.loc)}${d.o?' · '+E(d.o):''} · ${d.c} aluno${d.c>1?'s':''} confirmaram</div></div><div><button onclick="D['${l}'].c++;go('transporte')">Confirmar</button> <button class="o" onclick="delete D['${l}'];go('transporte')">Normalizou</button></div></div>`).join('')}
+<div class="cd"><table>${T[dir].map(x=>`<tr><td><b>${x[0]}</b></td><td>${x[1]}</td><td>${dir=='ida'?'→ IFTM':'→ Centro'}</td><td>${bs(x[1])}</td><td class="m">${D[x[1]]?'chega ~'+D[x[1]].m+' min depois':'no horário'}</td></tr>`).join('')}</table></div>
+<h2>Mapa (demonstrativo)</h2><div class="cd"><svg viewBox="0 0 400 160" width="100%" role="img" aria-label="Mapa demonstrativo"><path id="rt" d="M30 120 C100 30 180 140 250 70 S340 40 370 50" fill="none" stroke="#1f8a3b" stroke-width="4" stroke-dasharray="8 6"/>${[[30,120,'Centro'],[140,90,'Ponto Vila'],[250,70,'Ponto Av.']].map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="6" fill="#ffb627"/><text x="${p[0]-20}" y="${p[1]+20}" font-size="11" fill="currentColor">📍 ${p[2]}</text>`).join('')}<text x="325" y="80" font-size="12" fill="currentColor" font-weight="700">📍 IFTM</text><text font-size="18">🚌<animateMotion dur="8s" repeatCount="indefinite"><mpath href="#rt"/></animateMotion></text></svg><div class="m">Área pronta para integração futura com GPS/API de transporte.</div></div>`},
+caronas(){return `<h1>🚗 IFTM Caronas</h1><div class="two"><div>${RD.map((r,i)=>`<div class="cd"><div class="r"><b>${r.dir=='ida'?'CARONA PARA O IFTM':'CARONA DE VOLTA'}</b><span class="ch ${r.v?'ok':'bd'}">${r.v} vaga${r.v==1?'':'s'}</span></div>
+<p>Motorista: <b>${E(r.n)}</b><br>Saída: ${E(r.o)} · Horário: ${r.h}<br>Destino: ${E(r.d)}</p><div class="m">${E(r.cu)} · ⭐ ${r.r} · ${r.k} caronas · ✅ E-mail institucional verificado</div>
+<div class="r" style="margin-top:.6rem">${r.ix?'<span>Avaliar: '+[1,2,3,4,5].map(n=>`<button class="o" style="padding:.1rem .4rem" onclick="ts('Avaliação de ${n} ⭐ enviada!')">${n}⭐</button>`).join('')+'</span>':`<button ${r.v?'':'disabled'} onclick="RD[${i}].v--;RD[${i}].ix=1;ts('Interesse enviado a ${E(r.n)}!');go('caronas')">TENHO INTERESSE</button>`}</div></div>`).join('')}</div>
+<div class="cd"><h3>Publicar carona</h3><div style="display:grid;gap:.5rem"><select id="ct"><option value="ambos">Ida e volta</option><option value="ida">Somente ida</option><option value="volta">Somente volta</option></select><input id="co" placeholder="Bairro (origem/destino)"><label class="m">Horário de ida<input id="ch1" type="time" value="18:00"></label><label class="m">Horário de volta<input id="ch2" type="time" value="22:30"></label><input id="cv" type="number" min="1" max="6" value="3" aria-label="Vagas"><button onclick="pub()">PUBLICAR</button></div></div></div>`},
+estudos(){if(sub)return subv();return `<h1>📚 Sala Virtual de Estudos</h1><div class="two"><div class="g" style="grid-template-columns:1fr 1fr">${SUBS.map(s=>`<div class="cd cl" onclick="sub='${s}';st='perg';go('estudos')"><b>${s}</b><div class="m">${(QA[s]||[]).length} dúvidas · ${(MAT[s]||['a','b']).length} materiais</div></div>`).join('')}</div><div><button style="width:100%;margin-bottom:.7rem" onclick="go('chat')">💬 Abrir mensagens</button>${rank()}</div></div>`},
+chat(){const ms=MSG[cw]||(MSG[cw]=[[0,'Oi! Pode mandar sua dúvida.']]);return `<h1>💬 Mensagens</h1><div class="two" style="grid-template-columns:1fr 2fr"><div class="cd">${VETS.map(v=>`<div class="pl ${v[0]==cw?'on':''}" onclick="cw='${v[0]}';go('chat')">${v[0]}</div>`).join('')}</div><div class="cd"><b>${cw}</b><div class="chat" id="cc">${ms.map(m=>`<div class="bb ${m[0]?'me':''}">${E(m[1])}</div>`).join('')}</div><div class="r" style="flex-wrap:nowrap"><input id="ci" placeholder="Mensagem..." aria-label="Mensagem" onkeydown="if(event.key=='Enter')sm()"><button onclick="sm()">Enviar</button></div></div></div>`},
+agenda(){return `<h1>📅 Minha Agenda</h1>${AG.map(a=>`<div class="cd r"><b>${a[0]}</b><span>${a[1]} ${a[2]}</span></div>`).join('')}`},
+notif(){return `<div class="r"><h1>🔔 Notificações</h1><button class="o" onclick="N.forEach(n=>n.r=1);go('notif')">Marcar todas como lidas</button></div>${N.map(nl).join('')}`},
+perfil(){return `<h1>👤 Meu Perfil</h1><div class="cd r"><div><h2>${E(U.n)}</h2>ADS — 4º período<div class="m">${E(U.n.toLowerCase())}@estudante.iftm.edu.br ✅</div></div><div style="font-size:3rem">🎓</div></div>
+<div class="g stat"><div class="cd">Respostas<b>${Object.values(QA).flat().reduce((a,x)=>a+x.r.filter(r=>r.n==U.n).length,0)}</b></div><div class="cd">Pontuação<b>${RK[U.n]||0}</b></div><div class="cd">Avaliação caronas<b>⭐ 4,8</b></div></div>
+<div class="cd"><b>Disciplinas já cursadas</b><div class="m">Metodologia Científica · Matemática · Sistemas Operacionais</div></div><h2>Histórico de pedidos</h2>${O.filter(o=>o.u==U.n).map(o=>`<div class="cd r"><span>#${o.id} · ${E(o.i)}</span><span>${$$(o.t)} · ${SL[o.s]}</span></div>`).join('')}`},
+admin(){const mx=[62,71,58,80,93,86,86+O.length],a=Object.values(QA).flat().filter(x=>x.r.length).length+38;return `<h1>📊 Dashboard Administrativo</h1><div class="g stat"><div class="cd">👥 Usuários<b>1.248</b></div><div class="cd">🍔 Pedidos hoje<b>${86+O.length}</b></div><div class="cd">🚗 Caronas<b>${RD.length+41}</b></div><div class="cd">📚 Perguntas respondidas<b>${a}</b></div><div class="cd">🚌 Ocorrências<b>${Object.keys(D).length}</b></div><div class="cd">📈 Ativos hoje<b>312</b></div></div>
+<div class="cd"><b>Pedidos da semana</b><svg viewBox="0 0 280 110" width="100%">${mx.map((v,i)=>`<rect x="${i*40+10}" y="${100-v}" width="26" height="${v}" rx="5" fill="#1f8a3b"/><text x="${i*40+14}" y="108" font-size="9" fill="currentColor">${['Seg','Ter','Qua','Qui','Sex','Sáb','Hoje'][i]}</text>`).join('')}</svg></div>
+<div class="cd"><b>Banco de dados (modelo relacional)</b><div style="margin-top:.5rem">${TB.map(t=>`<span class="ch ok" style="margin:.15rem">${t}</span>`).join('')}</div><p class="m">Perfis: aluno, cantina e administrador. Administrador gerencia usuários, disciplinas, linhas, horários e moderação.</p></div>`}};
+function qq(i,d){q[i]=Math.max(1,(q[i]||1)+d);go('cantina')}
+function ad(i){cart[i]=(cart[i]||0)+(q[i]||1);q[i]=1;ts('Adicionado ao carrinho');go('cantina')}
+function pg(){mod(`<h3>Pagamento</h3><div class="m">Total: <b>${$$(tot()+.5)}</b></div><button onclick="mk('PIX')">PIX</button><button class="o" onclick="mk('Cartão')">Cartão</button><button class="o" onclick="cl()">Cancelar</button>`)}
+function mk(m){mod('<div class="spin"></div><p style="text-align:center">Processando pagamento...</p>');setTimeout(()=>{const id=Math.max(...O.map(o=>o.id))+1;O.push({id,i:Object.entries(cart).map(([i,n])=>n+'× '+P.find(p=>p.id==i).n).join(', '),t:tot()+.5,s:0,u:U.n});cart={};cl();nt('Pagamento aprovado ('+m+'). Pedido #'+id+' recebido.',1);setTimeout(()=>ss(id,1),7000);setTimeout(()=>ss(id,2),15000);go('pedido')},1200)}
+function ss(id,s){const o=O.find(x=>x.id==id);if(!o||o.s>=s)return;o.s=s;if(s==2)nt('Seu pedido #'+id+' está pronto para retirada!',1);if(U&&['pedido','painel'].includes(V))go(V)}
+function anp(){const n=$('#np').value.trim(),v=+$('#nv').value;if(!n||!v)return ts('Informe nome e preço.');P.push({id:P.length+1,c:cat,e:'🍽️',n,d:'Novo item',p:v,on:1});go('painel')}
+function rep(){mod(`<h3>Ônibus está atrasado</h3><select id="rl"><option>Linha 01</option><option>Linha 02</option></select><input id="rm" type="number" min="1" placeholder="Atraso em minutos"><input id="rc" placeholder="Localização aproximada"><input id="ro" placeholder="Observação"><button onclick="sr()">Registrar</button><button class="o" onclick="cl()">Cancelar</button>`)}
+function sr(){const l=$('#rl').value,m=+$('#rm').value;if(!m)return ts('Informe os minutos de atraso.');D[l]={m,c:1,loc:$('#rc').value||'Não informado',o:$('#ro').value};nt(l+' apresenta atraso.',1);cl();go('transporte')}
+function pub(){const t=$('#ct').value,o=$('#co').value.trim()||'Centro',v=+$('#cv').value||1,b={n:U.n,cu:'ADS — 4º período',r:5,k:0,v,ix:0};if(t!='volta')RD.unshift({...b,dir:'ida',o,d:'IFTM Campus Paracatu',h:$('#ch1').value});if(t!='ida')RD.unshift({...b,dir:'volta',o:'IFTM Campus Paracatu',d:o,h:$('#ch2').value});ts('Carona publicada!');go('caronas')}
+function rank(){const e=Object.entries(RK).sort((a,b)=>b[1]-a[1]);return `<div class="cd"><h3>🏆 Ranking de colaboração</h3>${e.map((x,i)=>`<div class="r"><span>${['🥇','🥈','🥉'][i]||i+1+'º'} ${E(x[0])}</span><b>${x[1]} pts</b></div>${i<3?`<div class="m">Colaborador ${['Ouro','Prata','Bronze'][i]}</div>`:''}`).join('')}</div>`}
+function subv(){const Q=QA[sub]=QA[sub]||[],M=MAT[sub]=MAT[sub]||['Resumo da disciplina','Lista de exercícios'];let c='';
+if(st=='perg')c=`<div class="cd r" style="flex-wrap:nowrap"><input id="pq" placeholder="Escreva sua dúvida" aria-label="Pergunta"><button onclick="ap()">FAZER UMA PERGUNTA</button></div>`+(Q.length?Q.map((x,i)=>`<div class="cd"><b>${E(x.a)}:</b> "${E(x.q)}"${x.r.map((r,j)=>`<div class="bb" style="margin:.5rem 0"><b>${E(r.n)}</b><br>${E(r.t)}<div style="margin-top:.3rem"><button class="o" style="padding:.1rem .5rem" onclick="vt(${i},${j},1)">👍 Essa resposta ajudou (${r.u})</button> <button class="o" style="padding:.1rem .5rem" onclick="vt(${i},${j},0)">👎 Não ajudou (${r.d})</button></div></div>`).join('')}<div class="r" style="flex-wrap:nowrap;margin-top:.4rem"><input id="rp${i}" placeholder="Responder" aria-label="Responder"><button onclick="ar(${i})">Responder</button></div></div>`).join(''):'<div class="cd m">Nenhuma dúvida ainda. Seja o primeiro a perguntar!</div>');
+else if(st=='vets')c=VETS.map(v=>`<div class="cd r"><div><b>${v[0]}</b><div class="m">${v[1]} · ⭐ ${v[2]} · ${v[3]} dúvidas respondidas</div></div><button onclick="cw='${v[0]}';go('chat')">ENVIAR MENSAGEM</button></div>`).join('');
+else c=M.map(m=>`<div class="cd r">📄 ${E(m)}<button class="o" onclick="ts('Abrindo ${E(m)}...')">Abrir</button></div>`).join('')+`<div class="cd r" style="flex-wrap:nowrap"><input id="mn" placeholder="Nome do material (PDF, resumo, link...)"><button onclick="MAT[sub].push($('#mn').value||'Novo material');go('estudos')">Adicionar</button></div>`;
+return `<button class="o" onclick="sub=null;go('estudos')">← Disciplinas</button><h1>${E(sub)}</h1><div>${[['perg','💬 Dúvidas'],['vets','🎓 Alunos que já cursaram'],['mat','📂 Materiais']].map(t=>`<span class="pl ${st==t[0]?'on':''}" onclick="st='${t[0]}';go('estudos')">${t[1]}</span>`).join('')}</div>${c}`}
+function ap(){const t=$('#pq').value.trim();if(!t)return ts('Escreva sua dúvida.');QA[sub].unshift({a:U.n,q:t,r:[]});RK[U.n]=(RK[U.n]||0)+2;ts('Dúvida publicada!');go('estudos')}
+function ar(i){const t=$('#rp'+i).value.trim();if(!t)return;QA[sub][i].r.push({n:U.n,t,u:0,d:0});RK[U.n]=(RK[U.n]||0)+10;ts('+10 pontos pela resposta!');go('estudos')}
+function vt(i,j,u){const r=QA[sub][i].r[j];u?r.u++:r.d++;const k=r.n==U.n?U.n:r.n.split(' ')[0];if(u)RK[k]=(RK[k]||0)+5;go('estudos')}
+function sm(){const t=$('#ci').value.trim();if(!t)return;const c=cw;MSG[c].push([1,t]);go('chat');setTimeout(()=>{MSG[c].push([0,['Boa pergunta! Vamos por partes?','Posso te passar meu resumo dessa matéria.','Te explico melhor depois da aula, pode ser?'][Math.random()*3|0]]);nt(c.split(' ')[0]+' respondeu sua mensagem.',1);if(V=='chat'&&cw==c)go('chat')},1200)}
+render();
+</script></body></html>
